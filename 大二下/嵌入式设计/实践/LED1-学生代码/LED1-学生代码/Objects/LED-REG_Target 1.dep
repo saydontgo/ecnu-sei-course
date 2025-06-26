@@ -1,0 +1,6 @@
+Dependencies for Project 'LED-REG', Target 'Target 1': (DO NOT MODIFY !)
+CompilerVersion: 5060960::V5.06 update 7 (build 960)::.\ARMCC
+F (.\main.c)(0x67D01A41)(--c99 -c --cpu Cortex-M4.fp.sp -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections-I"D:\Program Files\keil5\pack\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="541" -DSTM32F429xx-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+I (stm32f4xx.h)(0x5657CB9C)
+F (.\startup_stm32f429_439xx.s)(0x57D0CD32)(--cpu Cortex-M4.fp.sp --pd "__EVAL SETA 1" -g --apcs=interwork --pd "__MICROLIB SETA 1"-I"D:\Program Files\keil5\pack\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include"--pd "__UVISION_VERSION SETA 541" --pd "STM32F429xx SETA 1"--list .\listings\startup_stm32f429_439xx.lst --xref -o .\objects\startup_stm32f429_439xx.o --depend .\objects\startup_stm32f429_439xx.d)
+F (.\stm32f4xx.h)(0x5657CB9C)()
