@@ -1,0 +1,8 @@
+<div class="container">
+    <text class="title">
+        {{ title }}
+    </text>
+    <text class="content" onclick="exit">
+        Exit
+    </text>
+</div>

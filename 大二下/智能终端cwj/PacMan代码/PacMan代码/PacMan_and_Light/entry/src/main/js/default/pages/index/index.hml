@@ -1,0 +1,10 @@
+
+<div class="container">
+    <div class="container2">
+        <image class="zxpicl" onclick="open" src="/GameIMG/zhuxing.png"></image>
+        <image class="tag" src="/GameIMG/start.png"></image>
+        <image class="zxpicr" onclick="close" src="/GameIMG/zixing.png"></image>
+    </div>
+    <image class="button" onclick="start" src="/GameIMG/start_button.png"></image>
+    <image class="button" onclick="exit" src="/GameIMG/exit.png"></image>
+</div>

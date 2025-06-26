@@ -1,0 +1,7 @@
+<div class="container">
+    <text class="title">
+        {{ title }}
+    </text>
+    <image class="icon" src="/GameIMG/Win.png"></image>
+    <image onclick="toback" class="button" src="/GameIMG/ACK.png"/>
+</div>

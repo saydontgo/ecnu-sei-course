@@ -1,0 +1,24 @@
+{
+ "1.0.0": {
+  "LastPreviewDevice": {}
+ },
+ "1.0.1": {
+  "profileList": [
+   {
+    "id": "SmartVision",
+    "deviceType": "smartVision",
+    "width": 960,
+    "height": 480,
+    "shape": "rect",
+    "dpi": 160,
+    "orientation": "landscape",
+    "language": "zh_CN",
+    "colorMode": "light"
+   }
+  ],
+  "runningProfileList": [
+   "SmartVision"
+  ],
+  "availableProfileList": []
+ }
+}

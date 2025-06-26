@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="title-view">
+        <div class="back-view" onclick="exit">
+            <image class="back-img" src="../../common/back.png"/>
+            <text class="back-btn"> 退出 </text>
+        </div>
+        <text class="title">
+            {{ title }}
+        </text>
+    </div>
+    <image class="ledImg" if="{{statu == '0'}}" src="../../common/led_off.png" />
+    <image class="ledImg" if="{{statu == '1'}}" src="../../common/led_on.png" />
+    <div class="ledAction">
+        <div class="ledAction-view" onclick="open">
+            <image class="ledAction-img" src="../../common/open.png"/>
+            <text class="ledAction-btn">
+                开灯
+            </text>
+        </div>
+        <div class="ledAction-view" onclick="change">
+            <image class="ledAction-img" src="../../common/change.png"/>
+            <text class="ledAction-btn">
+                转换
+            </text>
+        </div>
+        <div class="ledAction-view" onclick="close">
+            <image class="ledAction-img" src="../../common/close.png"/>
+            <text class="ledAction-btn">
+                关灯
+            </text>
+        </div>
+    </div>
+</div>
