@@ -1,0 +1,102 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000 20000004 
+                       COUNT   EQU              0x20000004
+    2 00000000                 AREA             Reset,DATA,READONLY ;ResetÎªÄ¬È
+                                                            ÏµÄÈë¿ÚµØÖ·
+    3 00000000 12345678        DCD              0X12345678  ;³ÌÐò´Ó0x08000000¿ª
+                                                            Ê¼ÔËÐÐ£¬
+    4 00000004         ; ËùÑ¡ÓÃµÄÐ¾Æ¬ STM32F429IGT6
+    5 00000004         ; °üº¬ 2M Flash£¬
+    6 00000004         ; µØÖ·Çø¼äÎª 0x08000000~0x08100000¡£
+    7 00000004         ;¶øÏµÍ³½«Ö®ºóËÄ¸ö×Ö½ÚÄÚÈÝ·Ö¸øÁË¶ÑÕ»Ö¸Õë
+    8 00000004         ;ËùÒÔ¶¨Òå0x12345678·½±ã¹Û²ì
+    9 00000004 00000000        DCD              Reset_Handler ;¶¨ÒåÒ»¸ö±êºÅ£¬×÷
+                                                            ÎªºóÃæµÄÊä³ö
+   10 00000008                 AREA             CODE_SEGMENT,CODE,READONLY
+   11 00000000         Reset_Handler
+                               proc
+   12 00000000                 export           Reset_Handler [weak]
+   13 00000000         Start
+   14 00000000 F04F 0101       MOV              R1,#1
+   15 00000004 F04F 0202       MOV              R2,#2
+   16 00000008 EB01 0302       ADD              R3,R1,R2
+   17 0000000C 4C00            LDR              R4,=COUNT
+   18 0000000E 6023            STR              R3, [R4]
+   19 00000010         
+   20 00000010         
+   21 00000010                 ENDP
+   22 00000010                 END
+              20000004 
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp.sp --apcs=
+interwork --depend=.\objects\asm.d -o.\objects\asm.o -ID:\Users\cheng\AppData\L
+ocal\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Incl
+ude --predefine="__EVAL SETA 1" --predefine="__UVISION_VERSION SETA 541" --pred
+efine="STM32F401xC SETA 1" --list=.\listings\asm.lst asm.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+Reset 00000000
+
+Symbol: Reset
+   Definitions
+      At line 2 in file asm.s
+   Uses
+      None
+Comment: Reset unused
+1 symbol
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+CODE_SEGMENT 00000000
+
+Symbol: CODE_SEGMENT
+   Definitions
+      At line 10 in file asm.s
+   Uses
+      None
+Comment: CODE_SEGMENT unused
+Reset_Handler 00000000
+
+Symbol: Reset_Handler
+   Definitions
+      At line 11 in file asm.s
+   Uses
+      At line 9 in file asm.s
+      At line 12 in file asm.s
+
+Start 00000000
+
+Symbol: Start
+   Definitions
+      At line 13 in file asm.s
+   Uses
+      None
+Comment: Start unused
+3 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Absolute symbols
+
+COUNT 20000004
+
+Symbol: COUNT
+   Definitions
+      At line 1 in file asm.s
+   Uses
+      At line 17 in file asm.s
+Comment: COUNT used once
+1 symbol
+341 symbols in table
