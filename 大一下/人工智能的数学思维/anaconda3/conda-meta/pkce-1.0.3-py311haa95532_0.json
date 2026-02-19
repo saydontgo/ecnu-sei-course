@@ -1,0 +1,46 @@
+{
+  "build": "py311haa95532_0",
+  "build_number": 0,
+  "channel": "https://repo.anaconda.com/pkgs/main/win-64",
+  "constrains": [],
+  "depends": [
+    "python >=3.11,<3.12.0a0"
+  ],
+  "extracted_package_dir": "D:\\anaconda3\\pkgs\\pkce-1.0.3-py311haa95532_0",
+  "features": "",
+  "files": [
+    "Lib/site-packages/pkce-1.0.3.dist-info/INSTALLER",
+    "Lib/site-packages/pkce-1.0.3.dist-info/LICENSE",
+    "Lib/site-packages/pkce-1.0.3.dist-info/METADATA",
+    "Lib/site-packages/pkce-1.0.3.dist-info/RECORD",
+    "Lib/site-packages/pkce-1.0.3.dist-info/REQUESTED",
+    "Lib/site-packages/pkce-1.0.3.dist-info/WHEEL",
+    "Lib/site-packages/pkce-1.0.3.dist-info/direct_url.json",
+    "Lib/site-packages/pkce-1.0.3.dist-info/top_level.txt",
+    "Lib/site-packages/pkce/__init__.py",
+    "Lib/site-packages/pkce/__pycache__/__init__.cpython-311.pyc",
+    "Lib/site-packages/pkce/py.typed",
+    ".nonadmin"
+  ],
+  "fn": "pkce-1.0.3-py311haa95532_0.conda",
+  "license": "MIT",
+  "link": {
+    "source": "D:\\anaconda3\\pkgs\\pkce-1.0.3-py311haa95532_0",
+    "type": 1
+  },
+  "md5": "4b4265bbf7049e71ed2a16378a586773",
+  "name": "pkce",
+  "package_tarball_full_path": "D:\\anaconda3\\pkgs\\pkce-1.0.3-py311haa95532_0.conda",
+  "paths_data": {
+    "paths": [],
+    "paths_version": 1
+  },
+  "requested_spec": "defaults/win-64::pkce==1.0.3=py311haa95532_0[md5=4b4265bbf7049e71ed2a16378a586773]",
+  "sha256": "a46135bea2ceda39b8ff6e389753e54d361b907c3d1eb422f6187c9818465d0c",
+  "size": 9832,
+  "subdir": "win-64",
+  "timestamp": 1690385127000,
+  "track_features": "",
+  "url": "https://repo.anaconda.com/pkgs/main/win-64/pkce-1.0.3-py311haa95532_0.conda",
+  "version": "1.0.3"
+}

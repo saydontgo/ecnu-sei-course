@@ -1,0 +1,61 @@
+{
+  "build": "py311h2bbff1b_0",
+  "build_number": 0,
+  "channel": "https://repo.anaconda.com/pkgs/main/win-64",
+  "constrains": [],
+  "depends": [
+    "idna >=2.0",
+    "multidict >=4.0",
+    "python >=3.11,<3.12.0a0",
+    "vc >=14.1,<15.0a0",
+    "vs2015_runtime >=14.16.27012,<15.0a0"
+  ],
+  "extracted_package_dir": "D:\\anaconda3\\pkgs\\yarl-1.9.3-py311h2bbff1b_0",
+  "features": "",
+  "files": [
+    "Lib/site-packages/yarl-1.9.3.dist-info/INSTALLER",
+    "Lib/site-packages/yarl-1.9.3.dist-info/LICENSE",
+    "Lib/site-packages/yarl-1.9.3.dist-info/METADATA",
+    "Lib/site-packages/yarl-1.9.3.dist-info/NOTICE",
+    "Lib/site-packages/yarl-1.9.3.dist-info/RECORD",
+    "Lib/site-packages/yarl-1.9.3.dist-info/REQUESTED",
+    "Lib/site-packages/yarl-1.9.3.dist-info/WHEEL",
+    "Lib/site-packages/yarl-1.9.3.dist-info/direct_url.json",
+    "Lib/site-packages/yarl-1.9.3.dist-info/top_level.txt",
+    "Lib/site-packages/yarl/__init__.py",
+    "Lib/site-packages/yarl/__init__.pyi",
+    "Lib/site-packages/yarl/__pycache__/__init__.cpython-311.pyc",
+    "Lib/site-packages/yarl/__pycache__/_quoting.cpython-311.pyc",
+    "Lib/site-packages/yarl/__pycache__/_quoting_py.cpython-311.pyc",
+    "Lib/site-packages/yarl/__pycache__/_url.cpython-311.pyc",
+    "Lib/site-packages/yarl/_quoting.py",
+    "Lib/site-packages/yarl/_quoting_c.cp311-win_amd64.pyd",
+    "Lib/site-packages/yarl/_quoting_c.pyi",
+    "Lib/site-packages/yarl/_quoting_c.pyx",
+    "Lib/site-packages/yarl/_quoting_py.py",
+    "Lib/site-packages/yarl/_url.py",
+    "Lib/site-packages/yarl/py.typed",
+    ".nonadmin"
+  ],
+  "fn": "yarl-1.9.3-py311h2bbff1b_0.conda",
+  "license": "Apache-2.0",
+  "link": {
+    "source": "D:\\anaconda3\\pkgs\\yarl-1.9.3-py311h2bbff1b_0",
+    "type": 1
+  },
+  "md5": "94e2099026bb68836c116eb3d6cd0117",
+  "name": "yarl",
+  "package_tarball_full_path": "D:\\anaconda3\\pkgs\\yarl-1.9.3-py311h2bbff1b_0.conda",
+  "paths_data": {
+    "paths": [],
+    "paths_version": 1
+  },
+  "requested_spec": "defaults/win-64::yarl==1.9.3=py311h2bbff1b_0[md5=94e2099026bb68836c116eb3d6cd0117]",
+  "sha256": "7a0a3accd9a905f70af8c2473788e9dc72a8d3a04d38cc8af45a99bd32277da2",
+  "size": 120830,
+  "subdir": "win-64",
+  "timestamp": 1701105425000,
+  "track_features": "",
+  "url": "https://repo.anaconda.com/pkgs/main/win-64/yarl-1.9.3-py311h2bbff1b_0.conda",
+  "version": "1.9.3"
+}

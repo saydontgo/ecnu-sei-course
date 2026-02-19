@@ -1,0 +1,39 @@
+{
+  "build": "py311hd77b12b_0",
+  "build_number": 0,
+  "channel": "https://repo.anaconda.com/pkgs/main/win-64",
+  "constrains": [],
+  "depends": [
+    "liblief 0.12.3 hd77b12b_0",
+    "python >=3.11,<3.12.0a0",
+    "vc >=14.1,<15.0a0",
+    "vs2015_runtime >=14.16.27012,<15.0a0"
+  ],
+  "extracted_package_dir": "D:\\anaconda3\\pkgs\\py-lief-0.12.3-py311hd77b12b_0",
+  "features": "",
+  "files": [
+    "Lib/site-packages/lief.pyd",
+    ".nonadmin"
+  ],
+  "fn": "py-lief-0.12.3-py311hd77b12b_0.conda",
+  "license": "Apache-2.0",
+  "link": {
+    "source": "D:\\anaconda3\\pkgs\\py-lief-0.12.3-py311hd77b12b_0",
+    "type": 1
+  },
+  "md5": "62f7118cccbaddb78702d5315cf8f697",
+  "name": "py-lief",
+  "package_tarball_full_path": "D:\\anaconda3\\pkgs\\py-lief-0.12.3-py311hd77b12b_0.conda",
+  "paths_data": {
+    "paths": [],
+    "paths_version": 1
+  },
+  "requested_spec": "defaults/win-64::py-lief==0.12.3=py311hd77b12b_0[md5=62f7118cccbaddb78702d5315cf8f697]",
+  "sha256": "2686d0d7a6acf624584526ec8fc2a0168d1381ea833b86c2377823a206b80ad5",
+  "size": 1922238,
+  "subdir": "win-64",
+  "timestamp": 1676442596000,
+  "track_features": "",
+  "url": "https://repo.anaconda.com/pkgs/main/win-64/py-lief-0.12.3-py311hd77b12b_0.conda",
+  "version": "0.12.3"
+}

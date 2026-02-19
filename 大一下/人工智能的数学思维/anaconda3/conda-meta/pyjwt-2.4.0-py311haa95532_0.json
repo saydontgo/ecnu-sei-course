@@ -1,0 +1,65 @@
+{
+  "build": "py311haa95532_0",
+  "build_number": 0,
+  "channel": "https://repo.anaconda.com/pkgs/main/win-64",
+  "constrains": [
+    "cryptography >=3.3.1"
+  ],
+  "depends": [
+    "python >=3.11,<3.12.0a0"
+  ],
+  "extracted_package_dir": "D:\\anaconda3\\pkgs\\pyjwt-2.4.0-py311haa95532_0",
+  "features": "",
+  "files": [
+    "Lib/site-packages/PyJWT-2.4.0.dist-info/AUTHORS.rst",
+    "Lib/site-packages/PyJWT-2.4.0.dist-info/INSTALLER",
+    "Lib/site-packages/PyJWT-2.4.0.dist-info/LICENSE",
+    "Lib/site-packages/PyJWT-2.4.0.dist-info/METADATA",
+    "Lib/site-packages/PyJWT-2.4.0.dist-info/RECORD",
+    "Lib/site-packages/PyJWT-2.4.0.dist-info/REQUESTED",
+    "Lib/site-packages/PyJWT-2.4.0.dist-info/WHEEL",
+    "Lib/site-packages/PyJWT-2.4.0.dist-info/direct_url.json",
+    "Lib/site-packages/PyJWT-2.4.0.dist-info/top_level.txt",
+    "Lib/site-packages/jwt/__init__.py",
+    "Lib/site-packages/jwt/__pycache__/__init__.cpython-311.pyc",
+    "Lib/site-packages/jwt/__pycache__/algorithms.cpython-311.pyc",
+    "Lib/site-packages/jwt/__pycache__/api_jwk.cpython-311.pyc",
+    "Lib/site-packages/jwt/__pycache__/api_jws.cpython-311.pyc",
+    "Lib/site-packages/jwt/__pycache__/api_jwt.cpython-311.pyc",
+    "Lib/site-packages/jwt/__pycache__/exceptions.cpython-311.pyc",
+    "Lib/site-packages/jwt/__pycache__/help.cpython-311.pyc",
+    "Lib/site-packages/jwt/__pycache__/jwks_client.cpython-311.pyc",
+    "Lib/site-packages/jwt/__pycache__/utils.cpython-311.pyc",
+    "Lib/site-packages/jwt/algorithms.py",
+    "Lib/site-packages/jwt/api_jwk.py",
+    "Lib/site-packages/jwt/api_jws.py",
+    "Lib/site-packages/jwt/api_jwt.py",
+    "Lib/site-packages/jwt/exceptions.py",
+    "Lib/site-packages/jwt/help.py",
+    "Lib/site-packages/jwt/jwks_client.py",
+    "Lib/site-packages/jwt/py.typed",
+    "Lib/site-packages/jwt/utils.py",
+    ".nonadmin"
+  ],
+  "fn": "pyjwt-2.4.0-py311haa95532_0.conda",
+  "license": "MIT",
+  "link": {
+    "source": "D:\\anaconda3\\pkgs\\pyjwt-2.4.0-py311haa95532_0",
+    "type": 1
+  },
+  "md5": "a1c5da4cdd2a4119f18a888bf30fc97f",
+  "name": "pyjwt",
+  "package_tarball_full_path": "D:\\anaconda3\\pkgs\\pyjwt-2.4.0-py311haa95532_0.conda",
+  "paths_data": {
+    "paths": [],
+    "paths_version": 1
+  },
+  "requested_spec": "defaults/win-64::pyjwt==2.4.0=py311haa95532_0[md5=a1c5da4cdd2a4119f18a888bf30fc97f]",
+  "sha256": "33ddd94189ae2504fd4e37a377a9d3579db3e0577f456e9df3f09ffaebbc4f54",
+  "size": 45949,
+  "subdir": "win-64",
+  "timestamp": 1676438923000,
+  "track_features": "",
+  "url": "https://repo.anaconda.com/pkgs/main/win-64/pyjwt-2.4.0-py311haa95532_0.conda",
+  "version": "2.4.0"
+}

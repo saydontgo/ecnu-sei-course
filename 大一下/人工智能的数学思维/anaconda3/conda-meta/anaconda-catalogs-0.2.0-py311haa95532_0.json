@@ -1,0 +1,54 @@
+{
+  "build": "py311haa95532_0",
+  "build_number": 0,
+  "channel": "https://repo.anaconda.com/pkgs/main/win-64",
+  "constrains": [],
+  "depends": [
+    "aiohttp",
+    "intake",
+    "python >=3.11,<3.12.0a0",
+    "requests"
+  ],
+  "extracted_package_dir": "D:\\anaconda3\\pkgs\\anaconda-catalogs-0.2.0-py311haa95532_0",
+  "features": "",
+  "files": [
+    "Lib/site-packages/anaconda_catalogs-0.2.0.dist-info/INSTALLER",
+    "Lib/site-packages/anaconda_catalogs-0.2.0.dist-info/LICENSE",
+    "Lib/site-packages/anaconda_catalogs-0.2.0.dist-info/METADATA",
+    "Lib/site-packages/anaconda_catalogs-0.2.0.dist-info/RECORD",
+    "Lib/site-packages/anaconda_catalogs-0.2.0.dist-info/REQUESTED",
+    "Lib/site-packages/anaconda_catalogs-0.2.0.dist-info/WHEEL",
+    "Lib/site-packages/anaconda_catalogs-0.2.0.dist-info/direct_url.json",
+    "Lib/site-packages/anaconda_catalogs-0.2.0.dist-info/entry_points.txt",
+    "Lib/site-packages/anaconda_catalogs-0.2.0.dist-info/top_level.txt",
+    "Lib/site-packages/anaconda_catalogs/__init__.py",
+    "Lib/site-packages/anaconda_catalogs/__pycache__/__init__.cpython-311.pyc",
+    "Lib/site-packages/anaconda_catalogs/__pycache__/catalog.cpython-311.pyc",
+    "Lib/site-packages/anaconda_catalogs/__pycache__/exceptions.cpython-311.pyc",
+    "Lib/site-packages/anaconda_catalogs/catalog.py",
+    "Lib/site-packages/anaconda_catalogs/exceptions.py",
+    "Lib/site-packages/anaconda_catalogs/py.typed",
+    ".nonadmin"
+  ],
+  "fn": "anaconda-catalogs-0.2.0-py311haa95532_0.conda",
+  "license": "BSD-3-Clause",
+  "link": {
+    "source": "D:\\anaconda3\\pkgs\\anaconda-catalogs-0.2.0-py311haa95532_0",
+    "type": 1
+  },
+  "md5": "30fff1a63a6817630127e0d4f96d60fb",
+  "name": "anaconda-catalogs",
+  "package_tarball_full_path": "D:\\anaconda3\\pkgs\\anaconda-catalogs-0.2.0-py311haa95532_0.conda",
+  "paths_data": {
+    "paths": [],
+    "paths_version": 1
+  },
+  "requested_spec": "defaults/win-64::anaconda-catalogs==0.2.0=py311haa95532_0[md5=30fff1a63a6817630127e0d4f96d60fb]",
+  "sha256": "4726fdb9f1d81638d47557758bc0020e4d7d91d5b46b676e493e2b449f227398",
+  "size": 15806,
+  "subdir": "win-64",
+  "timestamp": 1685727727000,
+  "track_features": "",
+  "url": "https://repo.anaconda.com/pkgs/main/win-64/anaconda-catalogs-0.2.0-py311haa95532_0.conda",
+  "version": "0.2.0"
+}

@@ -1,0 +1,107 @@
+{
+  "build": "pyhd3eb1b0_0",
+  "build_number": 0,
+  "channel": "https://repo.anaconda.com/pkgs/main/noarch",
+  "constrains": [],
+  "depends": [
+    "python",
+    "setuptools"
+  ],
+  "extracted_package_dir": "D:\\anaconda3\\pkgs\\conda-pack-0.6.0-pyhd3eb1b0_0",
+  "features": "",
+  "files": [
+    "Lib/site-packages/conda_pack-0.6.0.dist-info/INSTALLER",
+    "Lib/site-packages/conda_pack-0.6.0.dist-info/LICENSE.txt",
+    "Lib/site-packages/conda_pack-0.6.0.dist-info/METADATA",
+    "Lib/site-packages/conda_pack-0.6.0.dist-info/RECORD",
+    "Lib/site-packages/conda_pack-0.6.0.dist-info/REQUESTED",
+    "Lib/site-packages/conda_pack-0.6.0.dist-info/WHEEL",
+    "Lib/site-packages/conda_pack-0.6.0.dist-info/direct_url.json",
+    "Lib/site-packages/conda_pack-0.6.0.dist-info/entry_points.txt",
+    "Lib/site-packages/conda_pack-0.6.0.dist-info/top_level.txt",
+    "Lib/site-packages/conda_pack/__init__.py",
+    "Lib/site-packages/conda_pack/_progress.py",
+    "Lib/site-packages/conda_pack/_version.py",
+    "Lib/site-packages/conda_pack/cli.py",
+    "Lib/site-packages/conda_pack/compat.py",
+    "Lib/site-packages/conda_pack/core.py",
+    "Lib/site-packages/conda_pack/formats.py",
+    "Lib/site-packages/conda_pack/prefixes.py",
+    "Lib/site-packages/conda_pack/scripts/posix/activate",
+    "Lib/site-packages/conda_pack/scripts/posix/deactivate",
+    "Lib/site-packages/conda_pack/scripts/posix/parcel",
+    "Lib/site-packages/conda_pack/scripts/windows/activate.bat",
+    "Lib/site-packages/conda_pack/scripts/windows/deactivate.bat",
+    ".nonadmin",
+    "Lib/site-packages/conda_pack/__pycache__/__init__.cpython-311.pyc",
+    "Lib/site-packages/conda_pack/__pycache__/_progress.cpython-311.pyc",
+    "Lib/site-packages/conda_pack/__pycache__/_version.cpython-311.pyc",
+    "Lib/site-packages/conda_pack/__pycache__/cli.cpython-311.pyc",
+    "Lib/site-packages/conda_pack/__pycache__/compat.cpython-311.pyc",
+    "Lib/site-packages/conda_pack/__pycache__/core.cpython-311.pyc",
+    "Lib/site-packages/conda_pack/__pycache__/formats.cpython-311.pyc",
+    "Lib/site-packages/conda_pack/__pycache__/prefixes.cpython-311.pyc",
+    "Scripts/conda-pack-script.py",
+    "Scripts/conda-pack.exe"
+  ],
+  "fn": "conda-pack-0.6.0-pyhd3eb1b0_0.conda",
+  "license": "BSD-3-Clause",
+  "link": {
+    "source": "D:\\anaconda3\\pkgs\\conda-pack-0.6.0-pyhd3eb1b0_0",
+    "type": 1
+  },
+  "md5": "c5ccd013e7332514c98d345aaa9de1c0",
+  "name": "conda-pack",
+  "noarch": "python",
+  "package_tarball_full_path": "D:\\anaconda3\\pkgs\\conda-pack-0.6.0-pyhd3eb1b0_0.conda",
+  "package_type": "noarch_python",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "Lib/site-packages/conda_pack/__pycache__/__init__.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "Lib/site-packages/conda_pack/__pycache__/_progress.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "Lib/site-packages/conda_pack/__pycache__/_version.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "Lib/site-packages/conda_pack/__pycache__/cli.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "Lib/site-packages/conda_pack/__pycache__/compat.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "Lib/site-packages/conda_pack/__pycache__/core.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "Lib/site-packages/conda_pack/__pycache__/formats.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "Lib/site-packages/conda_pack/__pycache__/prefixes.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "Scripts/conda-pack-script.py",
+        "path_type": "windows_python_entry_point_script"
+      }
+    ],
+    "paths_version": 1
+  },
+  "requested_spec": "defaults/noarch::conda-pack==0.6.0=pyhd3eb1b0_0[md5=c5ccd013e7332514c98d345aaa9de1c0]",
+  "sha256": "08f24ef17ffd36428ffef259dbc85599498050362b46bfef78d81448ba972234",
+  "size": 29786,
+  "subdir": "noarch",
+  "timestamp": 1611163076000,
+  "track_features": "",
+  "url": "https://repo.anaconda.com/pkgs/main/noarch/conda-pack-0.6.0-pyhd3eb1b0_0.conda",
+  "version": "0.6.0"
+}

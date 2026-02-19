@@ -1,0 +1,51 @@
+{
+  "build": "py311haa95532_0",
+  "build_number": 0,
+  "channel": "https://repo.anaconda.com/pkgs/main/win-64",
+  "constrains": [],
+  "depends": [
+    "python >=3.11,<3.12.0a0"
+  ],
+  "extracted_package_dir": "D:\\anaconda3\\pkgs\\certifi-2024.2.2-py311haa95532_0",
+  "features": "",
+  "files": [
+    "Lib/site-packages/certifi-2024.2.2.dist-info/INSTALLER",
+    "Lib/site-packages/certifi-2024.2.2.dist-info/LICENSE",
+    "Lib/site-packages/certifi-2024.2.2.dist-info/METADATA",
+    "Lib/site-packages/certifi-2024.2.2.dist-info/RECORD",
+    "Lib/site-packages/certifi-2024.2.2.dist-info/REQUESTED",
+    "Lib/site-packages/certifi-2024.2.2.dist-info/WHEEL",
+    "Lib/site-packages/certifi-2024.2.2.dist-info/direct_url.json",
+    "Lib/site-packages/certifi-2024.2.2.dist-info/top_level.txt",
+    "Lib/site-packages/certifi/__init__.py",
+    "Lib/site-packages/certifi/__main__.py",
+    "Lib/site-packages/certifi/__pycache__/__init__.cpython-311.pyc",
+    "Lib/site-packages/certifi/__pycache__/__main__.cpython-311.pyc",
+    "Lib/site-packages/certifi/__pycache__/core.cpython-311.pyc",
+    "Lib/site-packages/certifi/cacert.pem",
+    "Lib/site-packages/certifi/core.py",
+    "Lib/site-packages/certifi/py.typed",
+    ".nonadmin"
+  ],
+  "fn": "certifi-2024.2.2-py311haa95532_0.conda",
+  "license": "MPL-2.0",
+  "link": {
+    "source": "D:\\anaconda3\\pkgs\\certifi-2024.2.2-py311haa95532_0",
+    "type": 1
+  },
+  "md5": "2778fd9ec616b4cb2c1b9097e0ff8ed6",
+  "name": "certifi",
+  "package_tarball_full_path": "D:\\anaconda3\\pkgs\\certifi-2024.2.2-py311haa95532_0.conda",
+  "paths_data": {
+    "paths": [],
+    "paths_version": 1
+  },
+  "requested_spec": "defaults/win-64::certifi==2024.2.2=py311haa95532_0[md5=2778fd9ec616b4cb2c1b9097e0ff8ed6]",
+  "sha256": "9264f819e60b71704c8d821c519608b51716a45578e326bc524a99e6c21960b4",
+  "size": 165479,
+  "subdir": "win-64",
+  "timestamp": 1707229328000,
+  "track_features": "",
+  "url": "https://repo.anaconda.com/pkgs/main/win-64/certifi-2024.2.2-py311haa95532_0.conda",
+  "version": "2024.2.2"
+}
