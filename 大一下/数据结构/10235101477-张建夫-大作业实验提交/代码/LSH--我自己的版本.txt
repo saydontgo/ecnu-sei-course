@@ -1,0 +1,115 @@
+#include<iostream>
+#include<map>
+#include<vector>
+#include<cfloat>
+using namespace std;
+struct arrow {//存数据的结构
+		int id;
+		vector<double>dimension;
+		double distance;
+		arrow& operator=(arrow b);
+		arrow();
+};
+arrow& arrow::operator=(arrow b)
+{
+	this->distance = b.distance;
+	this->id = b.id;
+	return *this;
+}
+arrow::arrow()
+{
+	distance = DBL_MAX;
+}
+void heapify(arrow a[], int root, int size)
+{
+	int child1 = root * 2 + 1;
+	int child2 = child1 + 1;
+	while (root < size)
+	{
+		int min = root;
+		if (child1 < size && a[min].distance < a[child1].distance)min = child1;
+		if (child2 < size && a[min].distance < a[child2].distance)min = child2;
+		if (root == min)return;
+		arrow temp = a[root];
+		a[root] = a[min];
+		a[min] = temp;
+		root = min;
+		child1 = root * 2 + 1;
+		child2 = child1 + 1;
+	}
+}
+int main() {
+	int n, d, range;
+		cin >> n >> d >> range;
+		multimap<int, arrow>a;
+		for (int i = 0; i < n; i++)
+		{
+			arrow tmp;
+			tmp.id = i;
+			double temp_total = 0;
+			for (int j = 0; j < d; j++)
+			{
+				double temp;
+				cin >> temp;
+				tmp.dimension.push_back(temp);
+				temp_total += temp;
+			}
+			int key = temp_total * 1000000;
+			a.insert(pair<int, arrow>(key, tmp));
+		}
+		int en;
+		cin >> en;
+		for (int y = 0; y < en; y++)
+		{
+			double temp_total = 0;
+			arrow enquiry;
+			arrow res[range];
+			for (int j = 0; j < d; j++)
+			{
+				double temp;
+				cin >> temp;
+				enquiry.dimension.push_back(temp);
+				temp_total += temp;
+			}
+			int key = temp_total *1000000;
+			multimap<int, arrow>::iterator pos = a.find(key);
+			int upper_key = key, lower_key = key;
+				while (a.find(++upper_key) != a.end());
+				while (a.find(--lower_key) != a.end());
+			
+				for (multimap<int, arrow>::iterator it = pos; it != a.find(upper_key); it++)
+				{
+					arrow tmp = it->second;
+					tmp.dimension = it->second.dimension;
+					double distance = 0;
+					for (int j = 0; j < d; j++)
+					{
+						double tt = tmp.dimension[j] - enquiry.dimension[j];
+						distance += tt * tt;
+					}
+					if (distance < res[0].distance) {
+						res[0].distance = distance;
+						res[0].id = tmp.id;
+						heapify(res, 0, range);
+					}
+				}
+				for (multimap<int, arrow>::iterator it = --pos; it != a.find(lower_key); it--)
+				{
+					arrow tmp = it->second;
+					tmp.dimension = it->second.dimension;
+					double distance = 0;
+					for (int j = 0; j < d; j++)
+					{
+						double tt = tmp.dimension[j] - enquiry.dimension[j];
+						distance += tt * tt;
+					}
+					if (distance < res[0].distance) {
+						res[0].distance = distance;
+						res[0].id = tmp.id;
+						heapify(res, 0, range);
+					}
+				}
+				for (int i = 0; i < range; i++)
+						cout << res[i].id << " ";
+		}
+}

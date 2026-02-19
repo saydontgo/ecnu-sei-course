@@ -1,0 +1,83 @@
+#include<iostream>
+#include<vector>
+#include<algorithm>
+using namespace std;
+
+struct arrow {
+	int id;
+	vector<double>dimension;
+	double distance;
+};
+bool cmp(arrow a, arrow b)
+{
+	if (a.distance > b.distance)return false;
+	return true;
+}
+int main() {
+	int n, d, range;
+	cin >> n >> d >> range;
+	arrow* a = new arrow[8000];
+	for (int i = 0; i < n; i++)
+	{
+		a[i].id = i;
+		double distance = 0;
+		for (int j = 0; j < d; j++)
+		{
+			double temp;
+			cin >> temp;
+			a[i].dimension.push_back(temp);
+			distance += temp * temp;
+		}
+		a[i].distance = distance;
+	}
+	sort(a, a + n, cmp);
+	int nq;
+	cin >> nq;
+	for (int i = 0; i < nq; i++)
+	{
+		arrow q;
+		q.id = -1;
+		double q_distance = 0;
+		for (int j = 0; j < d; j++)
+		{
+			double temp;
+			cin >> temp;
+			q.dimension.push_back(temp);
+			q_distance += temp * temp;
+		}
+		int y = 0;
+		for (; y < n; y++)
+		{
+			if (q_distance < a[y].distance)break;
+		}
+		arrow* a_temp = new arrow[2 * range];
+		int count = 0;
+		for (int j = y - 1; j > -1 && j > y - range - 1; j--)
+		{
+			double distance = 0;
+			for (int k = 0; k < d; k++)
+			{
+				double t = q.dimension[k] - a[j].dimension[k];
+				distance += t * t;
+			}
+			a_temp[count].distance = distance;
+			a_temp[count++].id = a[j].id;
+		}
+		for (int j = y; j < n && j < y + range; j++)
+		{
+			double distance = 0;
+			for (int k = 0; k < d; k++)
+			{
+				double t = q.dimension[k] - a[j].dimension[k];
+				distance += t * t;
+			}
+			a_temp[count].distance = distance;
+			a_temp[count++].id = a[j].id;
+		}
+		sort(a_temp, a_temp + count, cmp);
+		for (int j = 0; j < range; j++)
+		{
+			cout << a_temp[j].id << " ";
+		}
+	}
+}

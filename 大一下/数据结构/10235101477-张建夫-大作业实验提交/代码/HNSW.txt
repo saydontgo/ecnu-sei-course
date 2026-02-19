@@ -1,0 +1,134 @@
+#include <iostream>
+#include <vector>
+#include <cmath>
+#include <queue>
+#include <algorithm>
+#include <limits>
+#include <cstdlib>
+
+using namespace std;
+
+struct Point {
+    vector<double> data;
+    int id;
+};
+
+double euclidean_distance(const vector<double>& a, const vector<double>& b) {
+    double dist = 0.0;
+    for (size_t i = 0; i < a.size(); ++i) {
+        dist += (a[i] - b[i]) * (a[i] - b[i]);
+    }
+    return sqrt(dist);
+}
+
+struct Neighbor {
+    int id;
+    double distance;
+
+    bool operator<(const Neighbor& other) const {
+        return distance > other.distance; // for min-heap
+    }
+};
+
+class KNNGraph {
+public:
+    KNNGraph(const vector<Point>& points, int k) : points(points), k(k) {
+        build_graph();
+    }
+
+    void approximate_knn(const Point& query, int k, vector<int>& result) {
+        priority_queue<Neighbor, vector<Neighbor>> min_heap;
+        vector<bool> visited(points.size(), false);
+
+        // Initialize search with a random starting point
+        int start = rand() % points.size();
+        min_heap.push({ start, euclidean_distance(query.data, points[start].data) });
+
+        while (!min_heap.empty()) {
+            Neighbor current = min_heap.top();
+            min_heap.pop();
+
+            if (visited[current.id]) continue;
+            visited[current.id] = true;
+
+            result.push_back(current.id);
+            if (result.size() >= k) break;
+
+            for (const auto& neighbor : graph[current.id]) {
+                if (!visited[neighbor.id]) {
+                    min_heap.push({ neighbor.id, euclidean_distance(query.data, points[neighbor.id].data) });
+                }
+            }
+        }
+    }
+
+private:
+    vector<Point> points;
+    int k;
+    vector<vector<Neighbor>> graph;
+
+    void build_graph() {
+        int n = points.size();
+        graph.resize(n);
+
+        for (int i = 0; i < n; ++i) {
+            for (int j = 0; j < k; ++j) {
+                int neighbor_id = rand() % n;
+                if (neighbor_id != i) {
+                    double dist = euclidean_distance(points[i].data, points[neighbor_id].data);
+                    graph[i].push_back({ neighbor_id, dist });
+                }
+            }
+        }
+
+        // Optimize the graph by refining neighbor lists
+        for (int i = 0; i < n; ++i) {
+            for (int j = 0; j < graph[i].size(); ++j) {
+                int neighbor_id = graph[i][j].id;
+                for (int l = 0; l < graph[neighbor_id].size(); ++l) {
+                    int candidate_id = graph[neighbor_id][l].id;
+                    if (candidate_id != i && find_if(graph[i].begin(), graph[i].end(), [candidate_id](const Neighbor& n) { return n.id == candidate_id; }) == graph[i].end()) {
+                        double dist = euclidean_distance(points[i].data, points[candidate_id].data);
+                        graph[i].push_back({ candidate_id, dist });
+                    }
+                }
+            }
+        }
+    }
+};
+
+void read_input(int& n, int& d, int& k, vector<Point>& dataset, int& nq, vector<Point>& queries) {
+    cin >> n >> d >> k;
+    dataset.resize(n);
+    for (int i = 0; i < n; ++i) {
+        dataset[i].data.resize(d);
+        dataset[i].id = i;
+        for (int j = 0; j < d; ++j) {
+            cin >> dataset[i].data[j];
+        }
+    }
+    cin >> nq;
+    queries.resize(nq);
+    for (int i = 0; i < nq; ++i) {
+        queries[i].data.resize(d);
+        for (int j = 0; j < d; ++j) {
+            cin >> queries[i].data[j];
+        }
+    }
+}
+
+int main() {
+    int n, d, k, nq;
+    vector<Point> dataset, queries;
+    read_input(n, d, k, dataset, nq, queries);
+    KNNGraph knn_graph(dataset, k);
+
+    for (const auto& query : queries) {
+        vector<int> result;
+        knn_graph.approximate_knn(query, k, result);
+        for (int id : result) {
+            cout << id << " ";
+        }
+    }
+    return 0;
+}

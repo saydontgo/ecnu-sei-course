@@ -1,0 +1,87 @@
+#include<iostream>
+#include<vector>
+#include<cfloat>
+#include<cmath>
+using namespace std;
+
+struct arrow {//存数据的结构
+	unsigned int id;
+	vector<double>dimension;
+	double distance;
+};
+
+struct arro {//存数据的结构
+	unsigned int id;
+	double distance = DBL_MAX;
+};
+void quickselect(arro a[], int start, int end, int range)
+{
+	int low = start;
+	int high = end;
+	int pivot = low;
+	unsigned int pivot_id = a[low].id;
+	double real_pivot = a[low].distance;
+	while (low < high)
+	{
+		while (low < high && a[high].distance>=real_pivot)
+			high--;
+		a[low].id = a[high].id;
+		a[low].distance = a[high].distance;
+		while (low < high && a[low].distance <= real_pivot)
+			low++;
+		a[high].id = a[low].id;
+		a[high].distance = a[low].distance;
+	}
+	a[low].id = pivot_id;
+	a[low].distance = real_pivot;
+	int temp = start + range - 1;
+	if (low > temp)quickselect(a, start, low - 1, range);
+	else if (low == temp)return;
+	else
+		quickselect(a, low + 1, end, range - (low - start + 1));
+}
+arro b[1000000];
+arrow a[1000000];
+int main()
+{
+	int n, d, range;
+	cin >> n >> d >> range;
+	for (int i = 0; i < n; ++i)
+	{
+		for (int j = 0; j < d; ++j)
+		{
+			double tmp;
+			cin >> tmp;
+			a[i].dimension.push_back(tmp);
+		}
+	}
+	int en;
+	int t = 0;
+	cin >> en;
+	double enq[d];
+	for (int y = 0; y < en; ++y)
+	{
+		for (int j = 0; j < d; ++j)
+		{
+			cin>>enq[j];
+		}
+		double distance;
+		for (int i = 0; i < n; ++i)
+		{
+			distance = 0;
+			double temp;
+			for (int j = 0; j < d; ++j)
+			{
+				temp = a[i].dimension[j] - enq[j];
+				distance += temp * temp;
+			}
+			b[i].distance = distance;
+			b[i].id = i;
+		}
+		quickselect(b, 0, n - 1, range);
+		for (int i = 0; i < range; i++)
+		{
+			cout<<b[i].id<<" ";
+		}
+	}
+}

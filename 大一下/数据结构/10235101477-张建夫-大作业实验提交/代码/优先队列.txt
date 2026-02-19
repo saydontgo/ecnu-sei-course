@@ -1,0 +1,98 @@
+#include <vector>
+#include <iostream>
+#include <cmath>
+#include <cfloat>
+using namespace std;
+struct arrow {//存数据的结构
+	unsigned int id;
+	vector<double>dimension;
+	double distance;
+};
+
+struct arro {//存数据的结构
+	unsigned int id;
+	double distance;
+	arro();
+};
+arro::arro()
+{
+	distance = DBL_MAX;
+}
+
+void heapify(arro a[], int root, int size)
+{
+	int child1 = root << 1;
+	++child1;
+	int child2 = child1;
+	++child2;
+	while (root < size)
+	{
+		int min = root;
+		if (child1 < size)
+			if (a[min].distance < a[child1].distance)min = child1;
+		if (child2 < size)
+			if (a[min].distance < a[child2].distance)min = child2;
+		if (root == min)return;
+		a[root].id = a[root].id ^ a[min].id;
+		a[min].id = a[root].id ^ a[min].id;
+		a[root].id = a[root].id ^ a[min].id;
+
+		double temp = a[root].distance;
+		a[root].distance = a[min].distance;
+		a[min].distance = temp;
+		root = min;
+		child1 = (root << 1) + 1;
+		child2 = child1 + 1;
+	}
+}
+int main()
+{
+	int n, d, range;
+	cin >> n >> d >> range;
+	arrow* a = new arrow[n];
+	for (unsigned int i = 0; i < n; ++i)
+	{
+		a[i].id = i;
+		for (int j = 0; j < d; ++j)
+		{
+			double tmp;
+			cin >> tmp;
+			a[i].dimension.push_back(tmp);
+		}
+	}
+	int en;
+	cin >> en;
+	double enq[d];
+	double distance = 0;
+	for (int y = 0; y < en; ++y)
+	{
+		arro heap[range];
+		for (int j = 0; j < d; ++j)
+		{
+			cin>>enq[j] ;
+		}
+
+		for (int i = 0; i < n; ++i)
+		{
+			distance = 0;
+			for (int j = 0; j < d; ++j)
+			{
+				double temp = a[i].dimension[j] - enq[j];
+				distance += temp * temp;
+			}
+
+			if (heap[0].distance > distance)
+			{
+
+				heap[0].distance = distance;
+				heap[0].id = a[i].id;
+				heapify(heap, 0, range);
+			}
+
+		}
+		for (int i = 0; i < range; i++)
+		{
+			cout<<heap[i].id<<" ";
+		}
+	}
+}

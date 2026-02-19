@@ -1,0 +1,175 @@
+#pragma GCC optimize("Ofast")
+#pragma GCC optimize("inline")
+#include <vector>
+#include <iostream>
+#include <cmath>
+#include <cfloat>
+using namespace std;
+struct arrow {//存数据的结构
+	unsigned int id;
+	vector<double>dimension;
+	double distance;
+};
+
+struct arro {//存数据的结构
+	unsigned int id;
+	double distance;
+	arro();
+};
+arro::arro()
+{
+	distance = DBL_MAX;
+}
+
+void heapify(arro a[], int root, int size)
+{
+	int child1 = root <<1;
+	++child1;
+	int child2 = child1;
+	++child2;
+	while (root < size-1)
+	{
+		int min = root;
+		if (child1 < size)
+		if (a[min].distance < a[child1].distance)min = child1;
+		if (child2 < size)
+		if(a[min].distance < a[child2].distance)min = child2;
+		if (root == min)return;
+		a[root].id=a[root].id^a[min].id;
+		a[min].id=a[root].id^a[min].id;
+		a[root].id=a[root].id^a[min].id;
+		
+	    double temp=a[root].distance;
+	    a[root].distance=a[min].distance;
+	    a[min].distance=temp;
+	    root=min;
+		child1 = (root<<1) + 1;
+		child2 = child1 + 1;
+	}
+}
+inline double readD() {
+    int zh = 0;          // 整数部分
+    int w = 1;           // 符号
+    int flag = 0;   // 是否有小数点
+    double xi = 0.0;     // 小数部分
+    double x = 10;      // 小数点后的位置
+    char ch = getchar(); // 获取第一个字符
+
+    while (ch == ' ') {
+        ch = getchar();
+    }
+        if (ch == '-'){ w = -1;
+        ch = getchar();}
+    while (ch >= 48 && ch <= 57) {
+        zh = (zh<<3)+(zh<<1) + (ch^48);
+        ch = getchar();
+    }
+    if (ch == '.') {
+        flag = 1;
+        ch = getchar();
+    }
+    while (flag==1&&ch>=48 && ch <= 57 ) {
+        xi = xi + (ch^48) / x;
+        x *= 10;
+        ch = getchar();
+    }
+    int exponent = 0;   
+    if (ch == 'e') {
+        ch = getchar();
+        ch=getchar();
+        while (ch >= '0'&&ch<='9') {
+            exponent = (exponent<<3)+(exponent<<1)+ ch^48;
+            ch = getchar();
+        }
+    }
+    double result = w * (zh + xi);
+    if (exponent > 0) {
+        result *= pow(0.1,  exponent);
+    }
+
+    return result;
+}
+inline void write(unsigned int x) {
+	char num[4]; 
+	int cnt = 0; 
+
+num[cnt++] = x %10 + 48;
+		x /= 10 ;
+		num[cnt++] = x %10 + 48;
+		x /= 10 ;
+	while (x > 0) { 
+		num[cnt++] = x %10 + 48;
+		x /= 10 ;
+	}
+	putchar(num[--cnt]);
+	putchar(num[--cnt]);
+	while (cnt > 0) {
+		putchar(num[--cnt]);
+	}
+}
+int read() { //inline内联函数进一步优化速度
+	int x = 0, f = 0; 
+	char ch = 0; 
+	while (!isdigit(ch)) { 
+		f |= (ch == '-');
+		ch = getchar();
+	}
+	while (isdigit(ch)) { 
+		x = (x << 3) + (x << 1) + (ch ^ 48); //(x<<3)+(x<<1)->x*10  ch^48->ch-'0'
+		ch = getchar();
+	}
+	return f ? -x : x;
+}
+int main()
+{
+	int n, d, range;
+	n=read();
+	d=read();
+	range=read();
+	arrow a[n];
+	for (unsigned int i = 0; i < n; ++i)
+	{
+		a[i].id = i;
+		for (int j = 0; j < d; ++j)
+		{
+			a[i].dimension.push_back(readD());
+		}
+	}
+	int en;
+	en=read();
+	double enq[d];
+		double distance = 0;
+	for (int y = 0; y < en; ++y)
+	{
+		arro heap[range];
+		for (int j = 0; j < d; ++j)
+		{
+		    enq[j]=readD();
+		}
+		
+		for (int i =  10;i <n ;  ++i)
+		{
+			distance=0;
+			for (int j = 0; j < d; ++j)
+			{
+				double temp = a[i].dimension[j] - enq[j];
+				distance += temp*temp;
+			}
+			
+			if (heap[0].distance > distance)
+			{
+
+				heap[0].distance = distance;
+				heap[0].id = a[i].id;
+				heapify(heap,0,range);
+			}
+
+		}
+		for (int i = 0; i < range; i++)
+		    {
+		         write(heap[i].id);
+		        putchar(' ');
+		    }
+	}	
+}
+  

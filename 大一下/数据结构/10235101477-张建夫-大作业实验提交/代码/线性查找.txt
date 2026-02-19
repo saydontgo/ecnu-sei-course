@@ -1,0 +1,60 @@
+#include<iostream>
+#include<vector>
+#include<algorithm>
+#include<cmath>
+using namespace std;
+struct arrow {
+	int id;
+	vector<double>dimension;
+	double distance;
+};
+bool cmp(arrow a, arrow b)
+{
+	if (a.distance > b.distance)return false;
+	return true;
+}
+int main() {
+	int n, d, k;
+	cin >> n >> d >> k;
+	arrow a[8000];
+	for (int i = 0; i < n; i++)
+	{
+		a[i].id = i;
+		for (int j = 0; j < d; j++)
+		{
+			double temp;
+			cin >> temp;
+			a[i].dimension.push_back(temp);
+		}
+	}
+	int nq;
+	cin >> nq;
+	for (int i = 0; i < nq; i++)
+	{
+		arrow q;
+		q.id = -1;
+		for (int j = 0; j < d; j++)
+		{
+			double temp;
+			cin >> temp;
+			q.dimension.push_back(temp);
+		}
+		for (int k = 0; k < n; k++)
+		{
+			double distance = 0;
+			for (int j = 0; j < d; j++)
+			{
+				double t = a[k].dimension[j] - q.dimension[j];
+				distance += t * t;
+			}
+			distance = sqrt(distance);
+			a[k].distance = distance;
+		}
+		sort(a, a + n, cmp);
+		for (int j = 0; j < k; j++)
+		{
+			cout << a[j].id << " ";
+		}
+		cout << endl;
+	}
+}

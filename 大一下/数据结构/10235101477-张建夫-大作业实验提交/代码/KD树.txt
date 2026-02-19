@@ -1,0 +1,167 @@
+#include<iostream>
+#include<vector>
+#include<algorithm>
+using namespace std;
+
+struct arrow {//存数据的结构
+	int id;
+	vector<double>dimension;
+};
+struct node {
+	vector<double>dimension;
+	int id;
+	node* left;
+	node* right;
+	node* root;
+	node() {
+		left = NULL;
+		right = NULL;
+		root = NULL;
+	}
+};
+struct KNN {
+	int id;
+	int distance;
+};
+void quicksort(arrow arr[], int low, int high, int& stand) {
+	if (low >= high) return;                 
+	double pivot = arr[low].dimension[stand]; 
+	arrow pivot1 = arr[low];
+	int start = low, end = high;
+
+	while (start < end) {
+		while (start < end && arr[end].dimension[stand] >= pivot)
+			end--;
+		arr[start] = arr[end];
+		while (start < end && arr[start].dimension[stand] <= pivot)
+			start++;  
+		arr[end] = arr[start];
+	}  
+	arr[end] = pivot1; 
+	quicksort(arr, low, start - 1, stand);
+
+	quicksort(arr, start + 1, high, stand);
+}
+node* partition(arrow* a, int low, int high, node* root, int stand, int& d)
+{
+	if (low >= high)
+	{
+		if (low > high)return NULL;
+		node* temp = new node;
+		temp->dimension = a[high].dimension;
+		temp->id = a[high].id;
+		temp->root = root;
+		return temp;
+	}
+	quicksort(a, low, high, stand);
+	int index = (high + low) / 2;
+	node* temp = new node;
+	temp->dimension = a[index].dimension;
+	temp->root = root;
+	temp->id = a[index].id;
+	temp->left = partition(a, low, index - 1, temp, (stand + 1) % d, d);
+	temp->right = partition(a, index + 1, high, temp, (stand + 1) % d, d);
+	return temp;
+}
+void initialize_KD_Tree(node& r, arrow* a, int n, int d) {
+	int stand = 0;
+	quicksort(a, 0, n - 1, stand);
+	int index = n / 2;
+	r.dimension = a[index].dimension;
+	r.id = a[index].id;
+	r.left = partition(a, 0, index - 1, &r, (stand + 1) % d, d);
+	r.right = partition(a, index + 1, n - 1, &r, (stand + 1) % d, d);
+}
+void dfs(node* root, KNN result[], int& d, vector<double>& v, int& count)
+{
+	if (root == NULL)return;
+	double distance = 0;
+	dfs(root->left, result, d, v, count);
+	dfs(root->right, result, d, v, count);
+	for (int i = 0; i < d; i++)
+	{
+		double tt = v[i] - root->dimension[i];
+		distance += tt * tt;
+	}
+	result[count].distance = distance;
+	result[count++].id = root->id;
+}
+void enquiry(node& r, vector<double>& v, int& d, KNN result[], int& count)
+{
+	int stand = 0;
+	node* temp = &r;
+	node* temp2 = &r;
+	while (temp != NULL)
+	{
+		temp2 = temp;
+		if (temp->dimension[stand] > v[stand])temp = temp->left;
+		else temp = temp->right;
+		stand = (stand + 1) % d;
+	}
+	int distance = 0;
+	temp2 = temp2->root;
+	int depth = 0;
+	while (temp2 != NULL && depth <= 8)
+	{
+		if (temp2->left != temp)
+		{
+			dfs(temp2->left, result, d, v, count);
+		}
+		else dfs(temp2->right, result, d, v, count);
+		for (int i = 0; i < d; i++)
+		{
+			double tt = v[i] - temp2->dimension[i];
+			distance += tt * tt;
+		}
+		result[count].distance = distance;
+		result[count++].id = temp2->id;
+		distance = 0;
+		temp = temp2;
+		temp2 = temp2->root;
+		depth++;
+	}
+}
+bool cmp(KNN a, KNN b)
+{
+	return a.distance < b.distance;
+}
+int main() {
+	int n, d, range;
+	cin >> n >> d >> range;
+	arrow* a = new arrow[n];
+	for (int i = 0; i < n; i++)
+	{
+		a[i].id = i;
+		double distance = 0;
+		for (int j = 0; j < d; j++)
+		{
+			double temp;
+			cin >> temp;
+			a[i].dimension.push_back(temp);
+		}
+	}
+	//sort(a, a + n, cmp);
+	//构建KDtree
+	node r;
+	initialize_KD_Tree(r, a, n, d);
+	int nq;
+	cin >> nq;
+	for (int i = 0; i < nq; i++)
+	{
+		vector<double>v;
+		for (int j = 0; j < d; j++)
+		{
+			double temp;
+			cin >> temp;
+			v.push_back(temp);
+		}
+		int count = 0;
+		KNN result[2000];
+		enquiry(r, v, d, result, count);
+		sort(result, result + count, cmp);
+		for (int j = 0; j < range; j++)
+		{
+			cout << result[j].id << " ";
+		}
+	}
+}

@@ -1,0 +1,87 @@
+#include <iostream>
+#include <vector>
+#include <cmath>
+#include <algorithm>
+
+struct Vector {
+    std::vector<double> components;
+    int id;
+};
+
+// 计算两个向量之间的欧几里得距离
+double calculateDistance(const std::vector<double>& a, const std::vector<double>& b) {
+    double distance = 0.0;
+    for (size_t i = 0; i < a.size(); ++i) {
+        distance += (a[i] - b[i]) * (a[i] - b[i]);
+    }
+    return std::sqrt(distance);
+}
+
+// 快速选择的分区函数
+int partition(std::vector<std::pair<double, int>>& distances, int left, int right) {
+    double pivot = distances[right].first;
+    int i = left;
+    for (int j = left; j < right; ++j) {
+        if (distances[j].first <= pivot) {
+            std::swap(distances[i], distances[j]);
+            ++i;
+        }
+    }
+    std::swap(distances[i], distances[right]);
+    return i;
+}
+
+// 快速选择算法
+void quickSelect(std::vector<std::pair<double, int>>& distances, int left, int right, int k) {
+    if (left < right) {
+        int pivotIndex = partition(distances, left, right);
+        if (pivotIndex == k) {
+            return;
+        } else if (pivotIndex < k) {
+            quickSelect(distances, pivotIndex + 1, right, k);
+        } else {
+            quickSelect(distances, left, pivotIndex - 1, k);
+        }
+    }
+}
+
+int main() {
+    int n, d, k, nq;
+    std::cin >> n >> d >> k;
+
+    std::vector<Vector> vectors(n);
+    for (int i = 0; i < n; ++i) {
+        vectors[i].id = i;
+        vectors[i].components.resize(d);
+        for (int j = 0; j < d; ++j) {
+            std::cin >> vectors[i].components[j];
+        }
+    }
+
+    std::cin >> nq;
+    std::vector<Vector> queries(nq);
+    for (int i = 0; i < nq; ++i) {
+        queries[i].id = i;
+        queries[i].components.resize(d);
+        for (int j = 0; j < d; ++j) {
+            std::cin >> queries[i].components[j];
+        }
+    }
+
+    for (const auto& query : queries) {
+        std::vector<std::pair<double, int>> distances;
+        for (const auto& vector : vectors) {
+            double distance = calculateDistance(query.components, vector.components);
+            distances.push_back({distance, vector.id});
+        }
+        
+        quickSelect(distances, 0, distances.size() - 1, k);
+        std::sort(distances.begin(), distances.begin() + k);
+
+        for (int i = 0; i < k; ++i) {
+            std::cout << distances[i].second << " ";
+        }
+    }
+
+    return 0;
+}

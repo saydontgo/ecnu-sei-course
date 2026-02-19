@@ -1,0 +1,290 @@
+#include<iostream>
+#include<vector>
+#include<cmath>
+#include<cfloat>
+using namespace std;
+struct arro {
+	int id;
+	double distance;
+	arro();
+};
+arro::arro()
+{
+	this->distance = DBL_MAX;
+}
+struct point {
+	vector<double>v;
+	int id;
+};
+struct node {
+	point center;
+	double radius;
+	vector<point>p;
+	node* left;
+	node* right;
+};
+class balltree {
+public:
+	void find(point p, int range);
+	void initialize(point p[], int n, int& range);
+private:
+	point center;
+	double radius;
+	node* left;
+	node* right;
+};
+void heapify(arro a[], int root, int size)
+{
+	int child1 = root << 1;
+	++child1;
+	int child2 = child1;
+	++child2;
+	while (root < size)
+	{
+		int min = root;
+		if (child1 < size)
+			if (a[min].distance < a[child1].distance)min = child1;
+		if (child2 < size)
+			if (a[min].distance < a[child2].distance)min = child2;
+		if (root == min)return;
+		a[root].id = a[root].id ^ a[min].id;
+		a[min].id = a[root].id ^ a[min].id;
+		a[root].id = a[root].id ^ a[min].id;
+
+		double temp = a[root].distance;
+		a[root].distance = a[min].distance;
+		a[min].distance = temp;
+		root = min;
+		child1 = (root << 1) + 1;
+		child2 = child1 + 1;
+	}
+}
+int cal(point p[], int low, int high, point center)
+{
+	int res = low > high ? high : low;
+	int size = p[0].v.size();
+	double max_distance = 0;
+	for (int i = low; i <= high; i++)
+	{
+		double distance = 0;
+		for (int j = 0; j < size; j++)
+		{
+			double tmp;
+			tmp = p[i].v[j] - center.v[j];
+			distance += tmp * tmp;
+		}
+		if (distance > max_distance)
+		{
+			max_distance = distance;
+			res = i;
+		}
+	}
+	return res;
+}
+void swap(point& p, point& pp)
+{
+	point tmp = pp;
+	pp = p;
+	p = tmp;
+}
+double dis(point a, point b)
+{
+	int size = b.v.size();
+	double res = 0;
+	for (int i = 0; i < size; i++)
+	{
+		double tmp = a.v[i] - b.v[i];
+		res += tmp * tmp;
+	}
+	return res;
+}
+void subtree(point p[], int low, int high, node* tree, int& range)
+{
+	int furtherest_index = cal(p, low + 1, high, p[low]);
+	int further_index = cal(p, low, high, p[furtherest_index]);
+	swap(p[low], p[furtherest_index]);
+	if (further_index == low)further_index = furtherest_index;
+	swap(p[high], p[further_index]);
+	tree->radius = dis(p[low], p[high]) / 2;
+	for (int i = 0; i < p[0].v.size(); ++i)
+	{
+		double index = p[low].v[i] + p[high].v[i];
+		tree->center.v.push_back(index / 2);
+	}
+	if (low >= high - range + 1)
+	{
+		for (int i = low; i <= high; ++i)
+		{
+			tree->p.push_back(p[i]);
+		}
+		//把节点存上	
+		return;
+	}
+	int left = low + 1;
+	int right = high - 1;
+	point lastone = p[left];
+	while (left < right)
+	{
+		while (left < right) {
+			double leftd = dis(p[right], p[low]);
+			double rightd = dis(p[right], p[high]);
+			if (leftd < rightd)
+			{
+				break;
+			}
+			right--;
+		}
+		p[left] = p[right];
+		while (left < right)
+		{
+			double leftd = dis(p[left], p[low]);
+			double rightd = dis(p[left], p[high]);
+			if (leftd > rightd)
+			{
+				break;
+			}
+			left++;
+		}
+		p[right] = p[left];
+	}
+	p[left] = lastone;
+	double leftd = dis(p[left], p[low]);
+	double rightd = dis(p[left], p[high]);
+	tree->left = new node;
+	tree->right = new node;
+	if (leftd > rightd)
+	{
+		subtree(p, left, high, tree->right, range);
+		subtree(p, low, left - 1, tree->left, range);
+	}
+	else
+	{
+		subtree(p, left + 1, high, tree->right, range);
+		subtree(p, low, left, tree->left, range);
+	}
+}
+void balltree::initialize(point p[], int n, int& range)
+{
+	int furtherest_index = cal(p, 0, n - 1, p[0]);
+	int further_index = cal(p, 0, n - 1, p[furtherest_index]);
+	swap(p[0], p[furtherest_index]);
+	if (further_index == 0)further_index = furtherest_index;
+	swap(p[n - 1], p[further_index]);
+	this->radius = dis(p[0], p[n - 1]) / 2;
+	for (int i = 0; i < p[0].v.size(); ++i)
+	{
+		double index = p[0].v[i] + p[n - 1].v[i];
+		this->center.v.push_back(index / 2);
+	}
+	int left = 1;
+	int right = n - 2;
+	point lastone = p[left];
+	while (left < right)
+	{
+		while (left < right)
+		{
+			double leftd = dis(p[right], p[0]);
+			double rightd = dis(p[right], p[n - 1]);
+			if (leftd < rightd)
+			{
+				break;
+			}
+			right--;
+		}
+
+		p[left] = p[right];
+		while (left < right)
+		{
+			double leftd = dis(p[left], p[0]);
+			double rightd = dis(p[left], p[n - 1]);
+			if (leftd > rightd)
+			{
+				break;
+			}
+			left++;
+		}
+		p[right] = p[left];
+	}
+	p[left] = lastone;
+	double leftd = dis(p[left], p[0]);
+	double rightd = dis(p[left], p[n - 1]);
+	this->left = new node;
+	this->right = new node;
+	if (leftd > rightd)
+	{
+		subtree(p, left, n - 1, this->right, range);
+		subtree(p, 0, left - 1, this->left, range);
+	}
+	else
+	{
+		subtree(p, left + 1, n - 1, this->right, range);
+		subtree(p, 0, left, this->left, range);
+	}
+}
+void subtree_find(point& p, node* subtree, double radius, arro heap[])
+{
+	int size = subtree->p.size();
+	if (size != 0)
+	{
+		for (int i = 0; i < size; ++i)
+		{
+			double distance = dis(p, subtree->p[i]);
+			if (distance < heap[0].distance)
+			{
+				heap[0].id = subtree->p[i].id;
+				heap[0].distance = distance;
+				heapify(heap, 0, 100);
+			}
+		}
+		return;
+	}
+	double left_radius = dis(p, subtree->left->center);
+	double right_radius = dis(p, subtree->right->center);
+	if (left_radius < subtree->left->radius + radius)
+		subtree_find(p, subtree->left, left_radius, heap);
+	if (right_radius < subtree->right->radius + radius)
+		subtree_find(p, subtree->right, right_radius, heap);
+}
+void balltree::find(point p, int range)
+{
+	arro heap[range];
+	double left_radius = dis(p, this->left->center);
+	double right_radius = dis(p, this->right->center);
+	subtree_find(p, this->left, left->radius, heap);
+	subtree_find(p, this->right, right_radius, heap);
+	for (int i = 0; i < range; i++)
+	{
+		cout << heap[i].id << " ";
+	}
+}
+int main()
+{
+	int n, d, k, nq;
+	cin >> n >> d >> k;
+	point p[n];
+	for (int i = 0; i < n; ++i)
+	{
+		p[i].id = i;
+		for (int j = 0; j < d; ++j)
+		{
+			double tmp;
+			cin >> tmp;
+			p[i].v.push_back(tmp);
+		}
+	}
+	balltree b;
+	b.initialize(p, n, k);
+	cin >> nq;
+
+	point query;
+	for (int i = 0; i < d; ++i)
+		query.v.push_back(0);
+	for (int i = 0; i < nq; ++i)
+	{
+		for (int j = 0; j < d; ++j)
+		{
+			cin >> query.v[j];
+		}
+		b.find(query, k);
+	}
+}

@@ -1,0 +1,139 @@
+#include <iostream>
+#include <vector>
+#include <cmath>
+#include <unordered_map>
+#include <algorithm>
+#include <random>
+
+using namespace std;
+
+struct Vector {
+    vector<double> data;
+    int id;
+};
+
+double euclideanDistance(const vector<double>& a, const vector<double>& b) {
+    double sum = 0;
+    for (size_t i = 0; i < a.size(); ++i) {
+        double diff = a[i] - b[i];
+        sum += diff * diff;
+    }
+    return sqrt(sum);
+}
+
+class LSH {
+public:
+    LSH(int numHashTables, int dimensions, int numHashes)
+        : numHashTables(numHashTables), dimensions(dimensions), numHashes(numHashes) {
+        generateRandomProjections();
+    }
+
+    void add(const Vector& vec) {
+        for (int i = 0; i < numHashTables; ++i) {
+            string hash = computeHash(vec.data, i);
+            hashTables[i][hash].push_back(vec);
+        }
+    }
+
+    vector<int> query(const vector<double>& queryVec, int k) {
+        unordered_map<int, int> candidates;
+        for (int i = 0; i < numHashTables; ++i) {
+            string hash = computeHash(queryVec, i);
+            if (hashTables[i].count(hash) > 0) {
+                for (const auto& vec : hashTables[i][hash]) {
+                    candidates[vec.id]++;
+                }
+            }
+        }
+        vector<pair<double, int>> distances;
+        for (const auto& candidate : candidates) {
+            distances.push_back({ euclideanDistance(queryVec, vectors[candidate.first].data), candidate.first });
+        }
+        sort(distances.begin(), distances.end());
+        vector<int> result;
+        for (int i = 0; i < min(k, (int)distances.size()); ++i) {
+            result.push_back(distances[i].second);
+        }
+        return result;
+    }
+
+    void setVectors(const vector<Vector>& vectors) {
+        this->vectors = vectors;
+    }
+
+private:
+    int numHashTables;
+    int dimensions;
+    int numHashes;
+    vector<vector<vector<double>>> randomProjections;
+    vector<unordered_map<string, vector<Vector>>> hashTables;
+    vector<Vector> vectors;
+
+    void generateRandomProjections() {
+        random_device rd;
+        mt19937 gen(rd());
+        normal_distribution<> dis(0, 1);
+        for (int i = 0; i < numHashTables; ++i) {
+            vector<vector<double>> tableProjections;
+            for (int j = 0; j < numHashes; ++j) {
+                vector<double> projection(dimensions);
+                for (int d = 0; d < dimensions; ++d) {
+                    projection[d] = dis(gen);
+                }
+                tableProjections.push_back(projection);
+            }
+            randomProjections.push_back(tableProjections);
+            hashTables.emplace_back();
+        }
+    }
+
+    string computeHash(const vector<double>& vec, int tableIdx) {
+        string hash = "";
+        for (int i = 0; i < numHashes; ++i) {
+            double dotProduct = 0;
+            for (int d = 0; d < dimensions; ++d) {
+                dotProduct += vec[d] * randomProjections[tableIdx][i][d];
+            }
+            hash += (dotProduct > 0) ? "1" : "0";
+        }
+        return hash;
+    }
+};
+
+int main() {
+    int n, d, k, nq;
+      cin >> n >> d >> k;
+
+    vector<Vector> vectors(n);
+    for (int i = 0; i < n; ++i) {
+        vectors[i].data.resize(d);
+        vectors[i].id = i;
+        for (int j = 0; j < d; ++j) {
+            cin >> vectors[i].data[j];
+        }
+    }
+
+    cin >> nq;
+    vector<vector<double>> queries(nq, vector<double>(d));
+    for (int i = 0; i < nq; ++i) {
+        for (int j = 0; j < d; ++j) {
+            cin >> queries[i][j];
+        }
+    }
+
+    int numHashTables = 10; // Number of hash tables
+    int numHashes = 9;    // Number of hashes per table
+    LSH lsh(numHashTables, d, numHashes);
+    lsh.setVectors(vectors);
+
+    for (const auto& vec : vectors) {
+        lsh.add(vec);
+    }
+
+    for (const auto& query : queries) {
+        vector<int> result = lsh.query(query, k);
+        for (int id : result) {
+            cout << id << " ";
+        }
+    }
+}
