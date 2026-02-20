@@ -1,0 +1,96 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>P1</title><meta name="generator" content="MATLAB 7.11"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2014-12-08"><meta name="DC.source" content="P1.m"><style type="text/css">
+
+body {
+  background-color: white;
+  margin:10px;
+}
+
+h1 {
+  color: #990000; 
+  font-size: x-large;
+}
+
+h2 {
+  color: #990000;
+  font-size: medium;
+}
+
+/* Make the text shrink to fit narrow windows, but not stretch too far in 
+wide windows. */ 
+p,h1,h2,div.content div {
+  max-width: 600px;
+  /* Hack for IE6 */
+  width: auto !important; width: 600px;
+}
+
+pre.codeinput {
+  background: #EEEEEE;
+  padding: 10px;
+}
+@media print {
+  pre.codeinput {word-wrap:break-word; width:100%;}
+} 
+
+span.keyword {color: #0000FF}
+span.comment {color: #228B22}
+span.string {color: #A020F0}
+span.untermstring {color: #B20000}
+span.syscmd {color: #B28C00}
+
+pre.codeoutput {
+  color: #666666;
+  padding: 10px;
+}
+
+pre.error {
+  color: red;
+}
+
+p.footer {
+  text-align: right;
+  font-size: xx-small;
+  font-weight: lighter;
+  font-style: italic;
+  color: gray;
+}
+
+  </style></head><body><div class="content"><pre class="codeinput"><span class="comment">%%&#26174;&#31034;&#27431;&#27954;&#21508;&#22269;&#20986;&#29983;&#29575;&#30340;&#26609;&#29366;&#22270;</span>
+
+<span class="comment">%clear workspace and command window</span>
+clear
+clc
+
+<span class="comment">%Load the EuropeFertility.mat</span>
+load <span class="string">EuropeFertility</span>;
+
+<span class="comment">%Plot the histogram(hist)of the European fertility rates</span>
+<span class="comment">%&#23558;EuropeRates&#37324;&#30340;&#25968;&#25454;&#25353;(&#26368;&#22823;&#20540;-&#26368;&#23567;&#20540;)/10&#21010;&#20998;&#20026;&#21313;&#20010;&#30697;&#24418;</span>
+<span class="comment">%&#21313;&#20010;&#30697;&#24418;&#39640;&#24230;&#34920;&#31034;&#36825;&#20010;&#21306;&#38388;&#20869;&#25968;&#25454;&#20986;&#29616;&#30340;&#27425;&#25968;</span>
+hist(EuropeRates)
+</pre><img vspace="5" hspace="5" src="P1_01.png" alt=""> <p class="footer"><br>
+      Published with MATLAB&reg; 7.11<br></p></div><!--
+##### SOURCE BEGIN #####
+%%显示欧洲各国出生率的柱状图
+
+%clear workspace and command window
+clear
+clc
+
+%Load the EuropeFertility.mat
+load EuropeFertility;
+
+%Plot the histogram(hist)of the European fertility rates
+%将EuropeRates里的数据按(最大值-最小值)/10划分为十个矩形
+%十个矩形高度表示这个区间内数据出现的次数
+hist(EuropeRates)
+
+##### SOURCE END #####
+--></body></html>
