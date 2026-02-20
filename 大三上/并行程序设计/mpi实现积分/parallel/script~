@@ -1,0 +1,16 @@
+Project 1:
+
+项目描述：
+本次项目主要采用MPI实现基于odd_even策略的数据的排序。
+具体步骤如下：
+1：首先进程0随机产生10个随机整数，进程0打印结果。
+2：进程0通过MPI_Scatter分配给5个进程，每个进程被分到2个整数。
+3：5个进程间分别按照书上的例子进行odd_even排序。进程间通讯采用MPI_Sendrecv函数。
+4：进程0通过MPI_Gather获得排序后的结果，并打印。
+
+
+程序编译与运行如下：
+mpic++（或者mpicc）-o sort sort.cpp 
+mpiexec -n 5 ./sort
+
+

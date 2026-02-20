@@ -1,0 +1,30 @@
+#include <iostream>
+#include <mpi.h>
+
+
+using namespace std;
+ 
+int main(int argc, char *argv[])
+{
+    int numprocessors, rank, namelen;
+    char processor_name[MPI_MAX_PROCESSOR_NAME];
+ 
+    MPI_Init(&argc, &argv);
+    MPI_Comm_size(MPI_COMM_WORLD, &numprocessors);
+    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+    MPI_Get_processor_name(processor_name, &namelen);
+
+    int local_int = 2*rank+1;
+    int total_int=0;
+
+    MPI_Reduce(&local_int, &total_int, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
+
+    if ( rank == 0 )
+    {
+    	cout <<"the total value is: " <<total_int<<endl;
+    } else {
+        cout << "slave  (" << rank << "/" << numprocessors << ") has a value of "<<total_int<<endl;
+   }
+   MPI_Finalize();
+   return 0;
+}

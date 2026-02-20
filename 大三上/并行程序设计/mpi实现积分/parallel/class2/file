@@ -1,0 +1,8 @@
+g++ -g -Wall -fopenmp -o hello hworld.cpp
+
+./hello 4
+
+
+g++ -g -Wall -fopenmp -o trap trapezodial.cpp
+
+./trap 4
