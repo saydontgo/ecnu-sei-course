@@ -1,0 +1,61 @@
+﻿antecedents,consequents,support,confidence
+alopecia,male,0.2923076923076923,0.8491620111731845
+female,diabete,0.3326923076923077,0.9010416666666665
+partial_paresis,diabete,0.36923076923076925,0.8571428571428571
+polydipsia,diabete,0.4326923076923077,0.9656652360515021
+polyuria,diabete,0.4673076923076923,0.9418604651162791
+sudden_weight_loss,diabete,0.36153846153846153,0.8663594470046082
+polydipsia,polyuria,0.37115384615384617,0.8283261802575107
+"delayed_healing, itching",weakness,0.27307692307692305,0.8114285714285713
+"old, polydipsia",diabete,0.27692307692307694,0.9664429530201344
+"old, polyuria",diabete,0.29423076923076924,0.9329268292682927
+"partial_paresis, polydipsia",diabete,0.29423076923076924,0.9745222929936307
+"partial_paresis, polyphagia",diabete,0.25769230769230766,0.8933333333333333
+"partial_paresis, polyuria",diabete,0.3096153846153846,0.9583333333333333
+"diabete, partial_paresis",polyuria,0.3096153846153846,0.8385416666666666
+"partial_paresis, weakness",diabete,0.2826923076923077,0.8855421686746988
+"polydipsia, polyphagia",diabete,0.28076923076923077,0.9931972789115646
+"polydipsia, polyuria",diabete,0.37115384615384617,1.0
+"diabete, polydipsia",polyuria,0.37115384615384617,0.8577777777777778
+polydipsia,"diabete, polyuria",0.37115384615384617,0.8283261802575107
+"polydipsia, sudden_weight_loss",diabete,0.28076923076923077,0.9798657718120806
+"polydipsia, visual_blurring",diabete,0.2692307692307692,0.9523809523809523
+"polydipsia, weakness",diabete,0.33653846153846156,0.9776536312849163
+"diabete, weakness",polydipsia,0.33653846153846156,0.8027522935779817
+"polyphagia, polyuria",diabete,0.3,0.9397590361445783
+"diabete, polyphagia",polyuria,0.3,0.8253968253968254
+"polyphagia, weakness",diabete,0.2673076923076923,0.8580246913580246
+"polyuria, sudden_weight_loss",diabete,0.3096153846153846,0.9757575757575758
+"diabete, sudden_weight_loss",polyuria,0.3096153846153846,0.8563829787234043
+"polyuria, visual_blurring",diabete,0.25961538461538464,0.9246575342465754
+"polyuria, weakness",diabete,0.3423076923076923,0.9621621621621621
+"diabete, weakness",polyuria,0.3423076923076923,0.8165137614678899
+"sudden_weight_loss, weakness",diabete,0.2846153846153846,0.9079754601226994
+"partial_paresis, polydipsia",polyuria,0.2692307692307692,0.89171974522293
+"partial_paresis, polyuria",polydipsia,0.2692307692307692,0.8333333333333333
+"partial_paresis, polydipsia",weakness,0.25961538461538464,0.8598726114649683
+"partial_paresis, weakness",polydipsia,0.25961538461538464,0.8132530120481929
+"polydipsia, sudden_weight_loss",polyuria,0.2519230769230769,0.8791946308724833
+"polydipsia, weakness",polyuria,0.2980769230769231,0.8659217877094972
+"polydipsia, polyuria",weakness,0.2980769230769231,0.8031088082901554
+"polyuria, weakness",polydipsia,0.2980769230769231,0.8378378378378378
+"partial_paresis, polydipsia, polyuria",diabete,0.2692307692307692,1.0
+"diabete, partial_paresis, polydipsia",polyuria,0.2692307692307692,0.9150326797385621
+"diabete, partial_paresis, polyuria",polydipsia,0.2692307692307692,0.8695652173913043
+"partial_paresis, polydipsia","diabete, polyuria",0.2692307692307692,0.89171974522293
+"partial_paresis, polyuria","diabete, polydipsia",0.2692307692307692,0.8333333333333333
+"partial_paresis, polydipsia, weakness",diabete,0.25384615384615383,0.9777777777777776
+"diabete, partial_paresis, polydipsia",weakness,0.25384615384615383,0.8627450980392156
+"diabete, partial_paresis, weakness",polydipsia,0.25384615384615383,0.8979591836734694
+"partial_paresis, polydipsia","diabete, weakness",0.25384615384615383,0.8407643312101911
+"polydipsia, polyuria, sudden_weight_loss",diabete,0.2519230769230769,1.0
+"diabete, polydipsia, sudden_weight_loss",polyuria,0.2519230769230769,0.8972602739726027
+"diabete, polyuria, sudden_weight_loss",polydipsia,0.2519230769230769,0.8136645962732919
+"polydipsia, sudden_weight_loss","diabete, polyuria",0.2519230769230769,0.8791946308724833
+"polydipsia, polyuria, weakness",diabete,0.2980769230769231,1.0
+"diabete, polydipsia, polyuria",weakness,0.2980769230769231,0.8031088082901554
+"diabete, polyuria, weakness",polydipsia,0.2980769230769231,0.8707865168539326
+"diabete, polydipsia, weakness",polyuria,0.2980769230769231,0.8857142857142857
+"polydipsia, polyuria","diabete, weakness",0.2980769230769231,0.8031088082901554
+"polyuria, weakness","diabete, polydipsia",0.2980769230769231,0.8378378378378378
+"polydipsia, weakness","diabete, polyuria",0.2980769230769231,0.8659217877094972
